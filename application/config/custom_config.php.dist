@@ -1,0 +1,91 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+/*
+|--------------------------------------------------------------------------
+| Configuraciónes personalizadas
+|-------------------------------------------------------------------------- 
+*/
+
+$config['site_config'] = (object) array(
+    'url_app'						=> '', //URL de inicio ejemplo https://localhost NO FINALIZAR CON BARRA -> /
+	'app_db'						=> '', //nombre de la base de datos
+	'app_db_username' 				=> '', //usuario de la base de datos (este usuario tiene que tener permisos de acceso a la base de moodle o puede ser el mismo)
+	'app_db_password'				=> '', //password de la base de datos
+	'url_moodle'     				=> '', //URL de MOODLE /NO FINALIZAR CON BARRA -> /
+	'moodle_db' 					=> '', //nombre de la base de datos
+	'moodle_db_username'			=> '', //usuario de la base de datos de moodle
+	'moodle_db_password'			=> '', //password de la base de datos de moodle
+	'route_moodle' 					=> '', // ruta del repo de moodle ejemplo /home/public_html/moodle
+	'sessioncookiedomain'			=> '', // dominio principal donde van a estar alojados el sistema de CI y Moodle iniciar con un punto ejemplo '.domain.com'
+	'route_moodle_data_sessions' 	=> '', //MISMA RUTA QUE USA MOODLE_DATA,NO FINALIZAR CON BARRA -> / ejemplo /home/moodle_data/sessions
+);
+
+
+/*
+|--------------------------------------------------------------------------
+| Configuraciónes de servidor de correo
+|-------------------------------------------------------------------------- 
+*/
+
+$config['email_config'] = array(
+	'protocol'      => '', 	// ejemplo smtp
+	'smtp_host'     => '', 	//servidor de correo smtp
+	'smtp_port'     => , 	//puerto smtp
+	'smtp_user'     => '', 	//usuario
+	'smtp_pass'     => '',	//password
+	'mailtype'      => 'html', // textt o html
+	'charset'       => 'utf-8',
+	'wrapchars'		=> 200,
+	'newline'       => "\r\n",
+	'crlf'			=> "\r\n",
+	'wordwrap'      => FALSE,
+);
+
+$config['no_reply'] = array(
+	'from_email'	=>'', // ejemplo noreply@ejemplo.com
+	'from_name'		=>'' // ejemplo No responder
+);
+
+
+/*
+|--------------------------------------------------------------------------
+| Configuración de Re-captcha google v3.
+|-------------------------------------------------------------------------- 
+*/
+
+$config['data_captcha_google'] = array(
+    'url' 		=>  '', 	//url de site verify
+    'siteKey' 	=>  '', 	//site key
+    'secretKey' =>  '',		//private key
+    );
+
+
+/*
+|--------------------------------------------------------------------------
+| Configuraciónes de la base de datos
+| (configuraciones básicas, para mas configuraciones ir a ./application/config/database)
+|-------------------------------------------------------------------------- 
+*/
+
+$config['app_db']= (object) array(
+    'hostname' => 'localhost',
+	'username' => $config['site_config']->app_db_username,           
+	'password' => $config['site_config']->app_db_password,
+	'database' => $config['site_config']->app_db,
+	'dbprefix' => '',
+);
+
+
+/*
+|--------------------------------------------------------------------------
+| Configuraciónes de base de datos moodle
+|-------------------------------------------------------------------------- 
+*/
+$config['moodle_db']= (object) array(
+    'hostname' => 'localhost',
+	'username' => $config['site_config']->moodle_db_username,           
+	'password' => $config['site_config']->moodle_db_password,
+	'database' => $config['site_config']->moodle_db,
+	'dbprefix' => '',
+);
